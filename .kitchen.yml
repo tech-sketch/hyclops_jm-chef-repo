@@ -4,11 +4,32 @@ driver:
 
 provisioner:
   name: chef_solo
+  require_chef_omnibus: true
+  chef_omnibus_url: https://www.getchef.com/chef/install.sh
+  client_rb:
+    cookbook_path:
+      - ./chef-repo/cookbooks
+      - ./chef-repo/site-cookbooks
 
 platforms:
   - name: centos-6.5
+    dns: 8.8.8.8
+    driver_config:
+      image: centos:centos6
+      platform: rhel
 
 suites:
-  - name: default
+  - name: fabric
     run_list:
+      - role[fabric]
+    attributes:
+  - name: zabbix-server
+    run_list:
+      - role[postgresql]
+      - role[zabbix-server]
+    attributes:
+  - name: jobscheduler-engine
+    run_list:
+      - role[postgresql]
+      - role[jobscheduler-engine]
     attributes:

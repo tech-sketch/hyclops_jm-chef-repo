@@ -1,3 +1,3 @@
 node_name "HyClops_JobMonitoring"
-cookbook_path ["/path/to/cookbooks", "/path/to/site-cookbooks"]
-role_path "/path/to/roles"
+cookbook_path ["/root/hyclops_jm-chef-repo/cookbooks", "/root/hyclops_jm-chef-repo/site-cookbooks"]
+role_path "/root/hyclops_jm-chef-repo/roles"
