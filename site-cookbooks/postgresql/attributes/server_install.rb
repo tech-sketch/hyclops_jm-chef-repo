@@ -11,7 +11,7 @@ default['postgresql']['archive_dir'] = "#{node['postgresql']['base_dir']}/wal_ar
 default['postgresql']['log_dir'] = "#{node['postgresql']['dir']}/pg_log"
 
 # postgresql.conf settings
-default['postgresql']['config']['listen_addresses'] = 'localhost'
+default['postgresql']['config']['listen_addresses'] = '*'
 default['postgresql']['config']['port'] = 5432
 default['postgresql']['config']['max_connections'] = 100
 default['postgresql']['config']['shared_buffers'] = '256MB'

@@ -7,7 +7,6 @@ default_attributes(
     "initdb_options" => "--no-locale --encoding=UTF8",
     "version" => "9.3",
     "config" => {
-      "listen_addresses" => "localhost",
       "standard_conforming_strings" => "off",
       "bytea_output" => "escape"
     },

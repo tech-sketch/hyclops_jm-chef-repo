@@ -1,9 +1,7 @@
 #!/bin/sh
 
 cd `dirname ${0}`
-DIR=$PWD
-INSTALL_DIR=$DIR/modules
-CHEF_DIR=$INSTALL_DIR/chef-repo
+CHEF_DIR=$PWD
 
 USER=scheduler
 JM_HOME=/home/$USER/hyclops_jm
@@ -21,18 +19,6 @@ if [ `cat /etc/redhat-release | wc -l` -ne 1 ]; then
   exit 1
 fi
 
-# Install fabric
-yum groupinstall -y "Development Tools" "Base"
-yum install -y zlib-devel tk-devel tcl-devel sqlite-devel ncurses-devel gdbm-devel readline-devel bzip2-devel db4-devel openssl-devel python-setuptools python-devel python-pip  --enablerepo=centosplus
-easy_install pip virtualenv
-pip install setuptools --upgrade
-pip install fabric --upgrade
-
-if [ `echo $?` -ne 0 ]; then
-  echo "Fabric install error occured."
-  exit 1
-fi
-
 # Chef install
 rpm -q chef
 if [ `echo $?` -ne 0 ]; then
@@ -45,6 +31,15 @@ fi
 
 cd $CHEF_DIR
 sed -i -e "s|CHEFDIR|$CHEF_DIR|g" config/solo.rb
+
+# Install fabric
+if [ `fab -V 2>&1 | grep Fabric | wc -l` -eq 0 ]; then
+  chef-solo -c config/solo.rb -o "role[fabric]"
+  if [ `echo $?` -ne 0 ]; then
+    echo "Fabric install error occured."
+    exit 1
+  fi
+fi
 
 # Install PostgreSQL9.3
 if [ `rpm -qa | grep postgresql93 | wc -l` -eq 0 ]; then
