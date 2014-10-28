@@ -22,11 +22,18 @@ when 'centos', 'redhat', 'amazon'
   end
 end
 
-# easy_install_package 'pip' do
-#   action :upgrade
-# end
-
 include_recipe "python::pip"
+
+# First install paramiko is always error.so ignore.
+python_pip 'pycrypto' do
+  action :install
+  ignore_failure true
+end
+
+python_pip 'setuptools' do
+  action :upgrade
+end
+
 
 %w(paramiko fabric).each do |pkg|
   python_pip pkg do
