@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "python::pip"
+
 case node[:platform]
 when 'centos', 'redhat', 'amazon'
   execute 'Install basic packages for fabric' do
@@ -26,20 +28,13 @@ easy_install_package 'pip' do
   action :upgrade
 end
 
-execute 'pip install setuptools --upgrade' do
-  user 'root'
-  action :run
-end
+#execute 'pip install setuptools --upgrade' do
+#  user 'root'
+#  action :run
+#end
 
-3.times do
-  begin
-    %w(ecdsa fabric).each do |pkg|
-      execute "pip install #{pkg}" do
-        user 'root'
-        action :run
-      end
-    end
-  rescue
-    retry
+%w(setuptools fabric).each do |pkg|
+  python_pip pkg do
+    action :install
   end
 end
