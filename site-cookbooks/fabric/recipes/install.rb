@@ -33,7 +33,7 @@ end
 #  action :run
 #end
 
-%w(setuptools fabric).each do |pkg|
+%w(setuptools paramiko fabric).each do |pkg|
   python_pip pkg do
     action :install
   end
