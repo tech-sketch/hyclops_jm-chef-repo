@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "python::pip"
-
 case node[:platform]
 when 'centos', 'redhat', 'amazon'
   execute 'Install basic packages for fabric' do
@@ -28,12 +26,9 @@ easy_install_package 'pip' do
   action :upgrade
 end
 
-#execute 'pip install setuptools --upgrade' do
-#  user 'root'
-#  action :run
-#end
+include_recipe "python::pip"
 
-%w(setuptools paramiko fabric).each do |pkg|
+%w(paramiko fabric).each do |pkg|
   python_pip pkg do
     action :install
   end
