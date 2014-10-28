@@ -31,9 +31,15 @@ execute 'pip install setuptools --upgrade' do
   action :run
 end
 
-%w(ecdsa fabric).each do |pkg|
-  execute "pip install #{pkg}" do
-    user 'root'
-    action :run
+3.times do
+  begin
+    %w(ecdsa fabric).each do |pkg|
+      execute "pip install #{pkg}" do
+        user 'root'
+        action :run
+      end
+    end
+  rescue
+    retry
   end
 end

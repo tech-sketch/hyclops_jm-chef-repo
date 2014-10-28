@@ -16,6 +16,10 @@ override_attributes(
     "oracle" => {
       "accept_oracle_download_terms" => true
     }
+  },
+  "postgresql" => {
+    "enable_pgdg_yum" => true,
+    "version" => "9.3"
   }
 )
 run_list([
