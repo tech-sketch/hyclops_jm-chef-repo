@@ -20,7 +20,7 @@ if [ `cat /etc/redhat-release | wc -l` -ne 1 ]; then
 fi
 
 # Chef install
-rpm -q chef
+rpm -q chef 2>&1 > /dev/null
 if [ `echo $?` -ne 0 ]; then
   curl -L https://www.opscode.com/chef/install.sh | bash
   if [ `echo $?` -ne 0 ]; then
@@ -30,7 +30,9 @@ if [ `echo $?` -ne 0 ]; then
 fi
 
 cd $CHEF_DIR
-sed -i -e "s|CHEFDIR|$CHEF_DIR|g" config/solo.rb
+if [ ! -e 'config/solo.rb' ]; then
+  sed "s|CHEFDIR|$CHEF_DIR|g" config/solo.rb.example > config/solo.rb
+fi
 
 # Install fabric
 if [ `fab -V 2>&1 | grep Fabric | wc -l` -eq 0 ]; then
