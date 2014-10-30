@@ -5,7 +5,6 @@ default_attributes(
   "postgresql" => {
     "enable_pgdg_yum" => true,
     "initdb_options" => "--no-locale --encoding=UTF8",
-    "version" => "9.3",
     "config" => {
       "standard_conforming_strings" => "off",
       "bytea_output" => "escape"

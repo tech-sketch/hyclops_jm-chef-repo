@@ -1,5 +1,14 @@
 # common settings
-default[:zabbix][:rpm_url] = 'http://repo.zabbix.com/zabbix/2.2/rhel/6/x86_64/zabbix-release-2.2-1.el6.noarch.rpm'
+default[:zabbix][:version] = "2.2"
+if node[:zabbix][:version] == "2.4"
+  default[:zabbix][:rpm_url] = 'http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-release-2.4-1.el6.noarch.rpm'
+elsif node[:zabbix][:version] == "2.2"
+  default[:zabbix][:rpm_url] = 'http://repo.zabbix.com/zabbix/2.2/rhel/6/x86_64/zabbix-release-2.2-1.el6.noarch.rpm'
+elsif node[:zabbix][:version] == "2.0"
+  default[:zabbix][:rpm_url] = 'http://repo.zabbix.com/zabbix/2.0/rhel/6/x86_64/zabbix-release-2.0-1.el6.noarch.rpm'
+else
+  default[:zabbix][:rpm_url] = 'http://repo.zabbix.com/zabbix/2.2/rhel/6/x86_64/zabbix-release-2.2-1.el6.noarch.rpm'
+end
 
 # zabbix server settings
 default[:zabbix][:server][:host_url] = '127.0.0.1'

@@ -2,14 +2,8 @@ name "jobscheduler-engine"
 description "JobScheduler Engine for HyClops JobMonitoring"
 # env_run_lists "name" => ["recipe[name]"], "environment_name" => ["recipe[name::attribute]"]
 # override_attributes(
-# default_attributes(
-override_attributes(
-  "jobscheduler" => {
-    "version" => {
-      "major" => "1.7",
-      "minor" => "4274"
-    }
-  },
+# override_attributes(
+default_attributes(
   "java" => {
     "install_flavor" => "oracle",
     "jdk_version" => 7,
@@ -18,8 +12,7 @@ override_attributes(
     }
   },
   "postgresql" => {
-    "enable_pgdg_yum" => true,
-    "version" => "9.3"
+    "enable_pgdg_yum" => true
   }
 )
 run_list([

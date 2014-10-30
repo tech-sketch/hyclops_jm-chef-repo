@@ -22,9 +22,9 @@ when 'centos', 'redhat', 'amazon'
   end
 end
 
-easy_install_package 'pip' do
-  action :upgrade
-end
+# easy_install_package 'pip' do
+#   action :upgrade
+# end
 
 include_recipe "python::pip"
 

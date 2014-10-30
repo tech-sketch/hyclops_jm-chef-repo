@@ -36,35 +36,35 @@ fi
 
 # Install fabric
 if [ `fab -V 2>&1 | grep Fabric | wc -l` -eq 0 ]; then
-  chef-solo -c config/solo.rb -o "role[fabric]"
+  chef-solo -c config/solo.rb -o "role[fabric]" -j config/config.json
   if [ `echo $?` -ne 0 ]; then
     echo "Fabric install error occured."
     exit 1
   fi
 fi
 
-# Install PostgreSQL9.3
-if [ `rpm -qa | grep postgresql93 | wc -l` -eq 0 ]; then
-  chef-solo -c config/solo.rb -o "role[postgresql]"
+# Install PostgreSQL9.x
+if [ `rpm -qa | grep postgresql9 | wc -l` -eq 0 ]; then
+  chef-solo -c config/solo.rb -o "role[postgresql]" -j config/config.json
   if [ `echo $?` -ne 0 ]; then
     echo "PostgreSQL install error occured."
     exit 1
   fi
 fi
 
-# Install Zabbix 2.2
+# Install Zabbix
 if [ `rpm -qa | grep zabbix-server | wc -l` -eq 0 ]; then
-  chef-solo -c config/solo.rb -o "role[zabbix-server]"
+  chef-solo -c config/solo.rb -o "role[zabbix-server]" -j config/config.json
   if [ `echo $?` -ne 0 ]; then
     echo "Zabbix install error occured."
     exit 1
   fi
 fi
 
-# Install JobScheduler 1.7
+# Install JobScheduler
 test -e /opt/sos-berlin.com/jobscheduler/scheduler/bin/jobscheduler.sh
 if [ `echo $?` -eq 1 ]; then
-  chef-solo -c config/solo.rb -o "role[jobscheduler-engine]"
+  chef-solo -c config/solo.rb -o "role[jobscheduler-engine]" -j config/config.json
   if [ `echo $?` -ne 0 ]; then
     echo "JobScheduler install error occured."
     exit 1

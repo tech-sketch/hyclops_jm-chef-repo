@@ -428,7 +428,9 @@ log_timezone = 'Japan'
 
 track_activities = on
 track_counts = on
+<% if node[:postgresql][:version].include?('9.2') || node[:postgresql][:version].include?('9.2') %>
 track_io_timing = on
+<% end %>
 #track_functions = none			# none, pl, all
 #track_activity_query_size = 1024	# (change requires restart)
 #update_process_title = on

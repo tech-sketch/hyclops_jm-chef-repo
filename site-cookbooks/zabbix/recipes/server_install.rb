@@ -33,11 +33,11 @@ end
 bash 'execute initial sql' do
   user "root"
   code <<-EOH
-  createuser zabbix -U postgres
+  createuser zabbix -S -D -R -U postgres
   createdb -U postgres -O zabbix zabbix
-  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-2.2.*/create/schema.sql
-  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-2.2.*/create/images.sql
-  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-2.2.*/create/data.sql
+  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-*/create/schema.sql
+  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-*/create/images.sql
+  psql -U zabbix zabbix < /usr/share/doc/zabbix-server-pgsql-*/create/data.sql
   sed -i -e "s|# php_value date.timezone Europe/Riga|php_value date.timezone Asia/Tokyo|" /etc/httpd/conf.d/zabbix.conf
   EOH
 end

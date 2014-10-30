@@ -1,0 +1,13 @@
+{
+  "postgresql": {
+    "version": "9.1"
+  },
+  "zabbix": {
+    "version": "2.4"
+  },
+  "jobscheduler": {
+    "version": {
+      "major": "1.5"
+    }
+  }
+}
