@@ -2,7 +2,7 @@
 default[:jobscheduler][:version][:major] = '1.7'
 if node[:jobscheduler][:version][:major] == '1.7'
   default[:jobscheduler][:version][:minor] = '4274'
-  default[:jobscheduler][:engine][:module_url] = "http://downloads.sourceforge.net/project/jobscheduler/jobscheduler_linux-x64.#{node[:jobscheduler][:version][:major]}.#{node[:jobscheduler][:version][:minor]}.tar.gz"
+  default[:jobscheduler][:engine][:module_url] = "http://downloads.sourceforge.net/project/jobscheduler/Archive/JobScheduler%20since%201.7/jobscheduler_linux-x64.#{node[:jobscheduler][:version][:major]}.#{node[:jobscheduler][:version][:minor]}.tar.gz"
 elsif node[:jobscheduler][:version][:major] == '1.6'
   default[:jobscheduler][:version][:minor] = '4246'
   default[:jobscheduler][:engine][:module_url] = "http://downloads.sourceforge.net/project/jobscheduler/Archive/JobScheduler%20since%201.6/jobscheduler_linux-x64.#{node[:jobscheduler][:version][:major]}.#{node[:jobscheduler][:version][:minor]}.tar.gz"
@@ -12,7 +12,7 @@ elsif node[:jobscheduler][:version][:major] == '1.5'
 else
   default[:jobscheduler][:version][:major] = '1.7'
   default[:jobscheduler][:version][:minor] = '4274'
-  default[:jobscheduler][:engine][:module_url] = "http://downloads.sourceforge.net/project/jobscheduler/jobscheduler_linux-x64.#{node[:jobscheduler][:version][:major]}.#{node[:jobscheduler][:version][:minor]}.tar.gz"
+  default[:jobscheduler][:engine][:module_url] = "http://downloads.sourceforge.net/project/jobscheduler/Archive/JobScheduler%20since%201.7/jobscheduler_linux-x64.#{node[:jobscheduler][:version][:major]}.#{node[:jobscheduler][:version][:minor]}.tar.gz"
 end
 default[:jobscheduler][:user] = 'scheduler'
 default[:jobscheduler][:user_home] = '/home'
