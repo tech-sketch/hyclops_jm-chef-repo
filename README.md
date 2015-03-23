@@ -18,8 +18,8 @@ HyClops JobMonitoring is released under the Apache License, Version 2.0.
 ## Download
 
 ```
-$ git clone https://github.com/tech-sketch/hyclops-chef-repo.git
-$ cd hyclops-chef-repo
+$ git clone https://github.com/tech-sketch/hyclops_jm-chef-repo.git
+$ cd hyclops_jm-chef-repo
 ```
 
 ## Configuration
